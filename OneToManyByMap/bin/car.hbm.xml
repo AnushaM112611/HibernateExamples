@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hib.Car" table="car">
+
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name"></property>
+		<property name="manufacturer"></property>
+		<map name="parts" table="partMap" cascade="all">
+			<key column="cid"></key>
+			<index column="part" type="string"></index>
+			<many-to-many class="com.hib.Part" column="pid"></many-to-many>
+		</map>
+	</class>
+	
+	  <class name="com.hib.Part" table="part">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name"></property>
+		<property name="manufacturedFrom"></property>
+	</class>  
+</hibernate-mapping>

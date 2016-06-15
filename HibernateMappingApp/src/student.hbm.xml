@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.entities.Student">
+	<id name="id">
+		<generator class="increment"></generator>
+	</id>
+	<property name="name"></property>
+	<property name="marks"></property>
+	<one-to-one name="address" cascade="all"></one-to-one>
+</class>
+
+
+<class name="com.entities.Address">
+	<id name="id">
+		<generator class="increment"></generator>
+	</id>
+	<property name="state"></property>
+	<property name="country"></property>
+	<one-to-one name="student"></one-to-one>
+</class>
+</hibernate-mapping>
